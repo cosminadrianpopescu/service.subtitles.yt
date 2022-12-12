@@ -23,7 +23,7 @@ NONE = 7
 _ADDON_ID = xbmcaddon.Addon().getAddonInfo("id")
 
 
-def log(text, log_level=NOTICE, addon_id=_ADDON_ID):
+def log(text, log_level=xbmc.LOGINFO, addon_id=_ADDON_ID):
     if not addon_id:
         addon_id = xbmcaddon.Addon().getAddonInfo('id')
     log_line = '[%s] %s' % (addon_id, text)

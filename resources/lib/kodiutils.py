@@ -7,7 +7,6 @@ import sys
 import re
 import logging
 import json as json
-import logger
 
 
 # read settings
@@ -59,22 +58,3 @@ def build_url(url):
 
 def urlencode(url):
     return url.replace("/", "%2F")
-
-
-def kodi_json_request(params):
-    data = json.dumps(params)
-    request = xbmc.executeJSONRPC(data)
-
-    try:
-        response = json.loads(request)
-    except UnicodeDecodeError:
-        response = json.loads(request.decode('utf-8', 'ignore'))
-
-    try:
-        if 'result' in response:
-            return response['result']
-        return None
-    except KeyError:
-        logger.log_warning("[%s] %s" %
-                    (params['method'], response['error']['message']))
-        return None
