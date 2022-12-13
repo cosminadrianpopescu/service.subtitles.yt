@@ -113,7 +113,6 @@ def search(params):
     endOfDirectory(int(sys.argv[1]))
 
 def _prepare_sub_txt(sub):
-    xbmc.log("PREPARING %s" % sub.replace("\n", ""), xbmc.LOGINFO)
     p1 = r"<[0-9]{2}:[0-9]{2}"
     if re.search(p1, sub, re.M) == None:
         xbmc.log("RETURNING UNMODIFIED STRING", xbmc.LOGINFO)
